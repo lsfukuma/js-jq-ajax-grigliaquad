@@ -10,20 +10,22 @@ $(document).ready(function(){
         $.ajax({
             'url': 'https://flynn.boolean.careers/exercises/api/random/int',
             'method': 'GET',
+            'context': this ,
             'success': function(data){
+                //dalla domanda faccio apparire il numero random sulla console
                 var numero = data.response
                 console.log('numero random dalle API: ' + numero)
                 if (numero <= 5) {
-                    $(this).addClass('.giallo');
+                    $(this).addClass('giallo');
+                    $(this).text(numero);
                 } else {
-                    $(this).addClass('.verde')
+                    $(this).addClass('verde');
+                    $(this).text(numero);
                 }
             },
             'error': function(){
                 alert('errore')
             }
-
         })
-
     });
 });
